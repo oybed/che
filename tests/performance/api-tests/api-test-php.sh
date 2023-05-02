@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-wget -O /tmp/api-utils.sh https://raw.githubusercontent.com/eclipse/che/main/tests/performance/api-tests/api-utils.sh
+wget -O /tmp/api-utils.sh https://raw.githubusercontent.com/oybed/che/main/tests/performance/api-tests/api-utils.sh
 source /tmp/api-utils.sh
 
 export TEST_DEVFILE_PATH="devfile-registry/devfiles/TP__php__php-hello-world/devworkspace-che-code-latest.yaml"
@@ -19,5 +19,7 @@ startWorkspace ${BASE_URL} ${TEST_DEVFILE_PATH} ${WORKSPACE_NAME}
 testProjectImported ${WORKSPACE_NAME} ${containerName} ${projectName}
 
 testCommand ${WORKSPACE_NAME} ${containerName} "${commandToTest}" "${expectedCommandOutput}"
+
+sleep 300
 
 deleteWorkspace ${WORKSPACE_NAME}

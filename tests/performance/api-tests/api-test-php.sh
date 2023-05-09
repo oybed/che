@@ -24,3 +24,4 @@ testCommand ${WORKSPACE_NAME} ${containerName} "${commandToTest}" "${expectedCom
 sleep 300
 
 deleteWorkspace ${WORKSPACE_NAME}
+oc delete project ${OCP_USERNAME}-test

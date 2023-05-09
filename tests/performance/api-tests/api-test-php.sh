@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 set -e
 
 wget -O /tmp/api-utils.sh https://raw.githubusercontent.com/oybed/che/main/tests/performance/api-tests/api-utils.sh
@@ -12,7 +12,7 @@ export containerName="tools"
 export commandToTest="cd /projects/$projectName; php hello-world.php >> command_log.txt; grep '$expectedCommandOutput' ./command_log.txt;"
 
 oc login -u $OCP_USERNAME -p $OCP_PASSWORD --server=$OCP_SERVER_URL --insecure-skip-tls-verify
-oc new-project $OCP_USERNAME_test
+oc new-project $OCP_USERNAME-test
 cd /tmp
 
 startWorkspace ${BASE_URL} ${TEST_DEVFILE_PATH} ${WORKSPACE_NAME}
